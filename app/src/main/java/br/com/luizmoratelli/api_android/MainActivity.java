@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             @Override public void onClick(View view) {
                 CensoService censoService = CensoService.retrofit.create(CensoService.class);
 
-                final Call<List<Coletor>> call = censoService.repoCenso("1015");
+                final Call<List<Coletor>> call = censoService.repoCenso("1001");
 
                 call.enqueue(new Callback<List<Coletor>>() {
                     @Override
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<List<Coletor>> call, Throwable t) {
                         final TextView textView = (TextView) findViewById(R.id.textView);
-                        textView.setText("Erro:" + t.getMessage());
+                        textView.setText("Erro: " + t.getMessage());
                     }
                 });
             }

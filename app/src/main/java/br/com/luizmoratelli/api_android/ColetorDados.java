@@ -25,7 +25,7 @@ class ColetorDados {
     @NonNull
     @Override
     public String toString() {
-        return "ColetorDados {" +
+        return "dados: {" +
                 "nome='" + nome + '\'' +
                 ", endereco='" + endereco + '\'' +
                 "}";

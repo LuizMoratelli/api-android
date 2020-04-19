@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import br.com.luizmoratelli.api_android.model.CensosResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<CensosResponse> call, Response<CensosResponse> response) {
                         final TextView textView = (TextView) findViewById(R.id.textView);
-                        textView.setText(response.body().getEmbedded().getCensos().get(0).getDados());
+                        textView.setText(response.body().getEmbedded().getCensos().get(0).getLinks().getSelf().getHref());
                     }
 
                     @Override

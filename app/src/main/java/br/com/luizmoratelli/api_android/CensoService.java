@@ -2,6 +2,7 @@ package br.com.luizmoratelli.api_android;
 
 import java.util.List;
 
+import br.com.luizmoratelli.api_android.model.CensosResponse;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

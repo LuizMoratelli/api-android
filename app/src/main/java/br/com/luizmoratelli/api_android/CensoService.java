@@ -16,7 +16,7 @@ public interface CensoService {
 
     public static final Retrofit retrofit =
             new Retrofit.Builder()
-            .baseUrl("https://whispering-headland-07022.herokuapp.com/api/censo")
+            .baseUrl("https://whispering-headland-07022.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 }

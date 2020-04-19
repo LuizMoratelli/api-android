@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             @Override public void onClick(View view) {
                 CensoService censoService = CensoService.retrofit.create(CensoService.class);
 
-                final Call<List<Coletor>> call = censoService.repoCenso("1006852");
+                final Call<List<Coletor>> call = censoService.repoCenso("1015");
 
                 call.enqueue(new Callback<List<Coletor>>() {
                     @Override

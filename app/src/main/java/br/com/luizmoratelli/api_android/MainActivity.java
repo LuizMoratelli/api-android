@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onUpdate() {
         Intent intent = new Intent(MainActivity.this, FormActivity.class);
-        intent.putExtra("selected_censo", selectedCensos.getDados());
+        intent.putExtra("selected_censo", selectedCensos);
         startActivity(intent);
     }
 

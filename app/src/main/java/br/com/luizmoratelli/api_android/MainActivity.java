@@ -24,21 +24,28 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
-                CensoService censoService = CensoService.retrofit.create(CensoService.class);
+            @Override
+            public void onClick(View view) {
+                CensoService censoService =
+                        CensoService.retrofit.create(CensoService.class);
 
-                final Call<CensosResponse> call = censoService.repoColetor(1001);
+                final Call<CensosResponse> call =
+                        censoService.repoColetor(1001);
 
                 call.enqueue(new Callback<CensosResponse>() {
                     @Override
-                    public void onResponse(Call<CensosResponse> call, Response<CensosResponse> response) {
-                        final TextView textView = (TextView) findViewById(R.id.textView);
+                    public void onResponse(Call<CensosResponse> call,
+                                           Response<CensosResponse> response) {
+                        final TextView textView =
+                                (TextView) findViewById(R.id.textView);
                         textView.setText(response.body().getEmbedded().getCensos().get(0).getLinks().getSelf().getHref());
                     }
 
                     @Override
-                    public void onFailure(Call<CensosResponse> call, Throwable t) {
-                        final TextView textView = (TextView) findViewById(R.id.textView);
+                    public void onFailure(Call<CensosResponse> call,
+                                          Throwable t) {
+                        final TextView textView =
+                                (TextView) findViewById(R.id.textView);
                         textView.setText("Erro: " + t.getMessage());
                     }
                 });

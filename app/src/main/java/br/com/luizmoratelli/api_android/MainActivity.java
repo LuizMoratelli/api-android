@@ -119,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onUpdate() {
+        Intent intent = new Intent(MainActivity.this, FormActivity.class);
+        intent.putExtra("selected_censo", selectedCensos.getDados());
+        startActivity(intent);
     }
 
     private void onDelete() {
@@ -130,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 CensoService.retrofit.create(CensoService.class);
 
         final Call<CensosResponse> call =
-                censoService.repoColetor(1001);
+                censoService.repoColetor(1006852);
 
         call.enqueue(new Callback<CensosResponse>() {
             @Override

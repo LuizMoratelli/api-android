@@ -28,4 +28,9 @@ public class Dados {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return "{\"name\": " + name + ", \"address\": " + address + ", \"phone\": " + phone + "}";
+    }
 }

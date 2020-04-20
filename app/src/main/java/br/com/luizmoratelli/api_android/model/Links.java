@@ -2,7 +2,9 @@ package br.com.luizmoratelli.api_android.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Links {
+import java.io.Serializable;
+
+public class Links implements Serializable {
     @SerializedName("self")
     private final Self self;
 
@@ -14,7 +16,7 @@ public class Links {
         return self;
     }
 
-    public static class Self {
+    public static class Self implements Serializable {
         @SerializedName("href")
         private final String href;
 

@@ -2,7 +2,9 @@ package br.com.luizmoratelli.api_android.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Censos {
+import java.io.Serializable;
+
+public class Censos implements Serializable {
     @SerializedName("coletor")
     private final int coletor;
 
@@ -30,7 +32,7 @@ public class Censos {
         return links;
     }
 
-    public static class Links {
+    public static class Links implements Serializable {
         @SerializedName("self")
         private final Links.Self self;
 
@@ -50,7 +52,7 @@ public class Censos {
             return censo;
         }
 
-        public static class Self {
+        public static class Self implements Serializable{
             @SerializedName("href")
             private final String href;
 
@@ -63,7 +65,7 @@ public class Censos {
             }
         }
 
-        public static class Censo {
+        public static class Censo implements Serializable {
             @SerializedName("href")
             private final String href;
 

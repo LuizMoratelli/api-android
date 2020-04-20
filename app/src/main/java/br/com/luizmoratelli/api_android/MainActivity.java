@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button button;
     ListView listView;
+    Censos selectedCensos;
 
     @Override
     protected void onResume() {
@@ -75,6 +78,51 @@ public class MainActivity extends AppCompatActivity {
                 onListCensos();
             }
         });
+        onLoadAddListeners();
+    }
+
+    private void onLoadAddListeners() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                PopupMenu menu = new PopupMenu(MainActivity.this, view);
+                menu.getMenu().add("Editar");
+                menu.getMenu().add("Remover");
+
+                selectedCensos = (Censos) listView.getAdapter().getItem(position);
+
+                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        popUpMenuActions(item);
+                        onListCensos();
+                        return true;
+                    }
+                });
+                menu.show();
+            }
+        });
+    }
+
+    private void popUpMenuActions(MenuItem item) {
+        switch (item.getTitle().toString()) {
+            case "Editar":
+                onUpdate();
+                break;
+            case "Remover":
+                onDelete();
+                break;
+            default:
+                Toast.makeText(MainActivity.this, "NOT IMPLEMENTED YET", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void onUpdate() {
+    }
+
+    private void onDelete() {
+        Toast.makeText(MainActivity.this, "A API não suporta esse método!", Toast.LENGTH_LONG).show();
     }
 
     private void onListCensos() {
@@ -82,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 CensoService.retrofit.create(CensoService.class);
 
         final Call<CensosResponse> call =
-                censoService.repoColetor(1006852);
+                censoService.repoColetor(1001);
 
         call.enqueue(new Callback<CensosResponse>() {
             @Override

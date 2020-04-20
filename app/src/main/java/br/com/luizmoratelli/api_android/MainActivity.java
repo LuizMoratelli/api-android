@@ -2,14 +2,15 @@ package br.com.luizmoratelli.api_android;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import br.com.luizmoratelli.api_android.adapter.CensoAdapter;
 import br.com.luizmoratelli.api_android.model.Censos;
 import br.com.luizmoratelli.api_android.model.CensosResponse;
 import retrofit2.Call;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                         final List<Censos> censos = response.body().getEmbedded().getCensos();
 
                         System.out.println(censos.size());
-                        ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, censos);
+                        CensoAdapter adapter = new CensoAdapter(MainActivity.this, (ArrayList<Censos>) censos);
                         listView.setAdapter(adapter);
                         //final TextView textView =
                           //      (TextView) findViewById(R.id.textView);

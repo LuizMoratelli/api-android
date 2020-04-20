@@ -7,7 +7,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface CensoService {
@@ -19,6 +21,12 @@ public interface CensoService {
     @POST("api/censo")
     Call<CensosResponse> repoPost(
             @Body Censo censo
+    );
+
+    @PATCH("censo/{id}")
+    Call<CensosResponse> repoPatch(
+            @Body Censo censo,
+            @Path("id") Integer id
     );
 
     Retrofit retrofit =

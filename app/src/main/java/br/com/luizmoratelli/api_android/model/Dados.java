@@ -31,6 +31,6 @@ public class Dados {
 
     @Override
     public String toString() {
-        return "{\"name\": " + name + ", \"address\": " + address + ", \"phone\": " + phone + "}";
+        return "{\"name\": \"" + name + "\", \"address\": \"" + address + "\", \"phone\": \"" + phone + "\"}";
     }
 }

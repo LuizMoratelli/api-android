@@ -48,6 +48,33 @@ public class FormActivity extends AppCompatActivity {
         });
     }
 
+    private void sendPatch(Censo censo) {
+        CensoService service = CensoService.retrofit.create(CensoService.class);
+        String[] link = censosToUpdate.getLinks().getSelf().getHref().split("/");
+        final Call<CensosResponse> call = service.repoPatch(censo, Integer.parseInt(link[link.length - 1]));
+
+        call.enqueue(new Callback<CensosResponse>() {
+            @Override
+            public void onResponse(Call<CensosResponse> call,
+                                   Response<CensosResponse> response) {
+                Toast.makeText(
+                        FormActivity.this,
+                        "Atualizado com sucesso!",
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+
+            @Override
+            public void onFailure(Call<CensosResponse> call, Throwable throwable) {
+                Toast.makeText(
+                        FormActivity.this,
+                        "Falha ao atualizar!",
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+        });
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,11 +99,7 @@ public class FormActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (censosToUpdate == null) {
-                    saveCensos();
-                } else {
-                   updateCensos();
-                }
+                saveCensos();
                 finish();
             }
         });
@@ -88,9 +111,10 @@ public class FormActivity extends AppCompatActivity {
         censo.setColetor(1006852);
         censo.setDados(dadosForm.toString());
 
-        sendPost(censo);
-    }
-
-    private void updateCensos() {
+        if (censosToUpdate == null) {
+            sendPost(censo);
+        } else {
+            sendPatch(censo);
+        }
     }
 }

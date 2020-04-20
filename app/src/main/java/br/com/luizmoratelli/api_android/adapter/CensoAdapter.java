@@ -37,7 +37,7 @@ public class CensoAdapter extends ArrayAdapter<Censos> {
 
         Dados dados = (new Gson()).fromJson(censos.getDados(), Dados.class);
 
-        name.setText(dados.getNome());
+        name.setText(dados.getName());
         link.setText(censos.getLinks().getSelf().getHref());
 
         return convertView;

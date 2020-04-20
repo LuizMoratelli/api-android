@@ -1,31 +1,31 @@
 package br.com.luizmoratelli.api_android.model;
 
 public class Dados {
-    private String nome_completo;
-    private String endereco;
-    private String telefone;
+    private String name;
+    private String address;
+    private String phone;
 
-    public String getNome() {
-        return nome_completo;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome_completo = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getAddress() {
+        return address;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
